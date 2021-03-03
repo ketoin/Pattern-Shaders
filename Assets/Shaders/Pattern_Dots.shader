@@ -34,16 +34,19 @@ Shader "Patttern_Dots"
 
 		void surf( Input i , inout SurfaceOutputStandard o )
 		{
-			float2 uv_Texture = i.uv_texcoord * _Texture_ST.xy + _Texture_ST.zw;
 			float3 vertexPos = mul( unity_WorldToObject, float4( i.worldPos , 1 ) );
+			float4 c = tex2D( _Texture,vertexPos.xy * _Texture_ST.xy + _Texture_ST.zw  );
+			float2 uv_Texture = i.uv_texcoord * _Texture_ST.xy + _Texture_ST.zw;
 			float4 result1 = (float4(vertexPos.x , vertexPos.y , 0.0 , 0.0));
 			float cosRes = cos( _Rotation );
 			float sinRes = sin( _Rotation );
 			float2 rotator = mul( ( result1 * _Tiling ).xy, float2x2( cosRes , -sinRes , sinRes , cosRes ));
 			float2 result2 = (float2(frac( rotator.x ) , frac( rotator.y )));
+			float4 c2 = tex2D( _Texture, result2 * _radius);
 			float stepResult = step( 0.0 , ( _radius - length( ( result2 - float2( 0.5,0.5 ) ) ) ) );
-			float4 lerpResult = lerp( _Color1 , _Color0 , stepResult);
-			o.Albedo = ( tex2D( _Texture, uv_Texture ) * lerpResult ).rgb;
+			float4 lerpResult = lerp(_Color0, c2, stepResult);
+			o.Albedo = lerpResult.rgb;
+			// o.Albedo = ( tex2D( _Texture, uv_Texture )  ).rgb;
 			o.Alpha = 1;
 		}
 

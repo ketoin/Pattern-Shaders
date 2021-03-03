@@ -5,7 +5,8 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Pattern_Stripes
   m_Shader: {fileID: 4800000, guid: b4437873e649f834c8eec7e78dbbc52c, type: 3}
   m_ShaderKeywords: 
@@ -24,8 +25,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _LineWidth: 0.5
-    - _Rotation: 0
-    - _Tiling: 5
+    - _Rotation: -9.1
+    - _Tiling: 12.73
     m_Colors:
     - _Color0: {r: 0.039215688, g: 0.23137257, b: 0.29411766, a: 0}
-    - _Color1: {r: 0.10980393, g: 0.83921576, b: 0.6313726, a: 0}
+    - _Color1: {r: 0, g: 1, b: 0.7150538, a: 0}
+  m_BuildTextureStacks: []
